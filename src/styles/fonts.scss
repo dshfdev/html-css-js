@@ -1,5 +1,3 @@
-@use 'variables' as *;
-
 @mixin font-face($name, $path, $weight: normal, $style: normal) {
   @font-face {
     font-family: $name;
@@ -12,6 +10,6 @@
   }
 }
 
-@include font-face('Jost', '../assets/fonts/Jost/Jost-Regular', $font-weight-regular);
-@include font-face('Jost', '../assets/fonts/Jost/Jost-SemiBold', $font-weight-semibold);
-@include font-face('Jost', '../assets/fonts/Jost/Jost-Bold', $font-weight-bold);
+@include font-face('Jost', '../assets/fonts/Jost/Jost-Regular', 400);
+@include font-face('Jost', '../assets/fonts/Jost/Jost-SemiBold', 600);
+@include font-face('Jost', '../assets/fonts/Jost/Jost-Bold', 700);
