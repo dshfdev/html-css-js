@@ -1,28 +1,18 @@
 //Шрифт
 $font-main: 'Jost', sans-serif;
-$font-weight-regular: 400;
-$font-weight-semibold: 600;
-$font-weight-bold: 700;
 
 //Цвета
 $primary-color: #141024;
 $secondary-color: #ffffff;
 $accent-color: #d52027;
-$additional-color: #f9f9f9;
-$form-color: #f6f6f6;
 
 //Фон
 $bg-primary-color: $secondary-color; // основной фон сайта
-$bg-secondary-color: $primary-color;
 $bg-accent-color: $accent-color;
-$bg-additional-color: $additional-color;
-$bg-form-color: $form-color;
 
 //Текст цвета
 $text-primary-color: $primary-color; // основной текст сайта (наследуется)
 $text-secondary-color: $secondary-color;
-$text-accent-color: $accent-color;
-$text-form-color: #282944;
 
 // Кнопки и элементы управления
 $controls-bg-primary: $accent-color;
