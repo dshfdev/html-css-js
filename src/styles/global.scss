@@ -34,7 +34,8 @@ section {
   font-weight: 700;
   color: $secondary-color;
 
-  &:hover, &:active {
+  &:hover,
+  &:active {
     color: $controls-color-secondary;
   }
 }
@@ -44,7 +45,8 @@ section {
   font-weight: 600;
   color: $secondary-color;
 
-  &:hover, &:active {
+  &:hover,
+  &:active {
     color: $controls-color-secondary;
   }
 }
