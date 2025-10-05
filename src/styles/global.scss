@@ -7,10 +7,11 @@ body {
   display: flex;
   flex-direction: column;
   font-family: $font-main;
+  font-size: 20px;
   font-weight: 400;
   line-height: 1.6;
   background-color: $bg-primary-color;
-  color: $primary-color;
+  color: $text-primary-color;
 }
 
 section {
