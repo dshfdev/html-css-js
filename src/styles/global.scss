@@ -4,11 +4,14 @@
 body {
   min-width: 320px;
   min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
   font-family: $font-main;
+  font-size: 20px;
   font-weight: 400;
   line-height: 1.6;
   background-color: $bg-primary-color;
-  color: $primary-color;
+  color: $text-primary-color;
 }
 
 section {
@@ -31,10 +34,26 @@ section {
   font-size: 30px;
   font-weight: 700;
   color: $secondary-color;
+
+  &:hover,
+  &:active {
+    color: $controls-color-secondary;
+  }
 }
 
 .tel {
   font-size: 30px;
   font-weight: 600;
   color: $secondary-color;
+
+  &:hover,
+  &:active {
+    color: $controls-color-secondary;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 10px;
+  }
 }

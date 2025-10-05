@@ -8,11 +8,13 @@ $accent-color: #d52027;
 
 //Фон
 $bg-primary-color: $secondary-color; // основной фон сайта
+$bg-secondary-color: $primary-color;
 $bg-accent-color: $accent-color;
 
 //Текст цвета
 $text-primary-color: $primary-color; // основной текст сайта (наследуется)
 $text-secondary-color: $secondary-color;
+$text-tertiary-color: #595664;
 
 // Кнопки и элементы управления
 $controls-bg-primary: $accent-color;
@@ -20,3 +22,4 @@ $controls-bg-primary-hover: #b9191d;
 $controls-bg-secondary: $primary-color;
 $controls-bg-secondary-hover: #282148;
 $controls-color-primary: $secondary-color;
+$controls-color-secondary: #e7e6e8;
