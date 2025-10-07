@@ -1,2 +1,87 @@
+@use '../variables' as *;
+
 .promo {
+  background-color: $bg-secondary-color;
+  height: calc(100dvh - 108px);
+  max-height: 972px;
+  position: relative;
+  overflow: hidden;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 116px;
+  }
+
+  &__title {
+    font-size: 70px;
+    font-weight: 600;
+    color: $text-secondary-color;
+  }
+
+  &__subtitle {
+    max-width: 478px;
+    margin-top: 20px;
+    color: $text-secondary-color;
+  }
+
+  &-content__btn {
+    margin-top: 50px;
+  }
+
+  &__img {
+    position: absolute;
+    top: 55px;
+    left: 48%;
+    width: 783px;
+    height: auto;
+  }
+}
+
+@media (max-width: 1024px) {
+  .promo {
+    height: calc(100dvh - 64px);
+
+    &__content {
+      margin-top: 52px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .promo {
+    padding: 30px 0 40px;
+    max-height: 553px;
+
+    &__content {
+      margin-top: 0;
+      align-items: center;
+    }
+
+    &__title {
+      font-size: 30px;
+    }
+
+    &__subtitle {
+      max-width: 236px;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    &-content__btn {
+      margin-top: 287px;
+      min-width: 300px;
+      padding: 18px 54px;
+      z-index: 1;
+    }
+
+    &__img {
+      width: 273px;
+      left: 50%;
+      top: unset;
+      bottom: 40px;
+      transform: translateX(-50%);
+    }
+  }
 }
