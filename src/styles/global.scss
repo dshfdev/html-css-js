@@ -35,8 +35,7 @@ section {
   font-weight: 700;
   color: $secondary-color;
 
-  &:hover,
-  &:active {
+  &:hover {
     color: $controls-color-secondary;
   }
 }
@@ -46,13 +45,16 @@ section {
   font-weight: 600;
   color: $secondary-color;
 
-  &:hover,
-  &:active {
+  &:hover {
     color: $controls-color-secondary;
   }
 }
 
 @media (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+
   .container {
     padding: 0 10px;
   }

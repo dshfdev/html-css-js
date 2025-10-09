@@ -1,2 +1,88 @@
+@use '../variables' as *;
+
 .promo {
+  background-color: $bg-secondary-color;
+  height: calc(100dvh - 108px);
+  max-height: 972px;
+  position: relative;
+  overflow: hidden;
+
+  .promo-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 116px;
+    color: $text-secondary-color;
+
+    &__title {
+      font-size: 70px;
+      font-weight: 600;
+    }
+
+    &__subtitle {
+      max-width: 478px;
+      margin-top: 20px;
+    }
+
+    &__btn {
+      margin-top: 50px;
+    }
+  }
+
+  &__img {
+    position: absolute;
+    top: 55px;
+    left: 48%;
+    width: 783px;
+    height: auto;
+  }
+}
+
+@media (max-width: 1024px) {
+  .promo {
+    height: calc(100dvh - 64px);
+    padding: 40px 0;
+
+    .promo-content {
+      margin-top: 80px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .promo {
+    padding: 30px 0 40px;
+    max-height: 553px;
+
+    .promo-content {
+      margin-top: 0;
+      height: 100%;
+      align-items: center;
+
+      &__title {
+        font-size: 30px;
+      }
+
+      &__subtitle {
+        max-width: 300px;
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      &__btn {
+        margin-top: auto;
+        min-width: 300px;
+        padding: 17px 54px;
+        z-index: 1;
+      }
+    }
+
+    &__img {
+      width: 273px;
+      left: 50%;
+      top: unset;
+      bottom: 40px;
+      transform: translateX(-50%);
+    }
+  }
 }
