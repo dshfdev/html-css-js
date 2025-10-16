@@ -22,7 +22,7 @@
         text-align: center;
         flex-basis: 360px;
         border-radius: 20px;
-        border: 1px solid #e7e6e8;
+        border: 1px solid $controls-color-secondary;
         padding: 40px;
         transition:
           transform 0.3s ease,
@@ -31,25 +31,27 @@
 
         &__header {
           position: relative;
-          display: inline-block;
           font-size: 30px;
           font-weight: 600;
           margin: 0 auto;
 
           &::before,
           &::after {
-            content: '–';
+            content: '';
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
+            width: 20px;
+            height: 3px;
+            background-color: currentColor;
           }
 
           &::before {
-            right: calc(100% + 8px);
+            left: -30px;
           }
 
           &::after {
-            left: calc(100% + 8px);
+            right: -30px;
           }
         }
 
@@ -63,7 +65,7 @@
           font-size: 18px;
           font-weight: 400;
           margin-top: 20px;
-          margin-bottom: 52px;
+          margin-bottom: 51px;
         }
 
         &__button {
