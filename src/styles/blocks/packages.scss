@@ -11,14 +11,13 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      align-items: stretch;
       gap: 40px;
       margin-top: 60px;
 
       .package-card {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        align-items: center;
         text-align: center;
         flex-basis: 360px;
         border-radius: 20px;
@@ -70,6 +69,7 @@
 
         &__button {
           margin-top: auto;
+          width: 100%;
         }
 
         &:hover {
