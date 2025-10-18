@@ -1,0 +1,120 @@
+@use '../variables' as *;
+
+.packages {
+  .packages-content {
+    &__title {
+      font-size: 50px;
+      font-weight: 600;
+    }
+
+    .packages-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 60px;
+
+      .package-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        flex-basis: 360px;
+        border-radius: 20px;
+        border: 1px solid $controls-color-secondary;
+        padding: 40px;
+        transition:
+          transform 0.3s ease,
+          background-color 0.3s ease,
+          color 0.3s ease;
+
+        &__header {
+          position: relative;
+          font-size: 30px;
+          font-weight: 600;
+          margin: 0 auto;
+
+          &::before,
+          &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 3px;
+            background-color: currentColor;
+          }
+
+          &::before {
+            left: -30px;
+          }
+
+          &::after {
+            right: -30px;
+          }
+        }
+
+        &__price {
+          font-size: 50px;
+          font-weight: 600;
+          margin-top: 83px;
+        }
+
+        &__description {
+          font-size: 18px;
+          font-weight: 400;
+          margin-top: 20px;
+          margin-bottom: 51px;
+        }
+
+        &__button {
+          margin-top: auto;
+          width: 100%;
+        }
+
+        &:hover {
+          transform: scale(1.03);
+          background-color: $bg-secondary-color;
+          color: $text-secondary-color;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .packages {
+    padding: 60px 0;
+
+    .packages-content {
+      &__title {
+        font-size: 30px;
+        line-height: 1.4;
+        text-align: center;
+      }
+
+      .packages-list {
+        gap: 30px;
+        margin-top: 40px;
+
+        .package-card {
+          flex-basis: 300px;
+          padding: 40px 20px;
+
+          &__price {
+            margin-top: 40px;
+          }
+
+          &__description {
+            font-size: 16px;
+            margin-bottom: 40px;
+          }
+
+          &__button {
+            padding: 17px 54px;
+          }
+        }
+      }
+    }
+  }
+}
