@@ -21,12 +21,31 @@
           <a href="tel:+78000001122" class="tel">+7 800 000 11 22</a>
           <div class="header__buttons header-buttons">
             <a class="header-buttons__btn header-buttons__btn--tel" href="tel:+78000001122">
-              <img src="../assets/images/svg/Call.svg" alt="" />
+              <img src="../assets/icons/phone-icon.svg" alt="" />
             </a>
-            <button class="header-buttons__btn header-buttons__btn--burger">
-              <img src="../assets/images/svg/Burger-menu.svg" alt="" />
+            <button
+              class="header-buttons__btn header-buttons__btn--burger"
+              id="burger-btn"
+              aria-controls="mobile-menu"
+              aria-expanded="false"
+              aria-label="Открыть меню"
+            >
+              <img src="../assets/icons/burger-icon.svg" alt="" />
             </button>
           </div>
+          <nav class="mobile-menu" id="mobile-menu" hidden>
+            <ul class="mobile-menu__list">
+              <li><a href="#about" class="mobile-menu__link">О школе</a></li>
+              <li><a href="#teachers" class="mobile-menu__link">Тренеры</a></li>
+              <li><a href="#prices" class="mobile-menu__link">Стоимость</a></li>
+            </ul>
+            <button
+              class="header-buttons__btn header-buttons__btn--close-mobile-menu"
+              id="close-mobile-menu-btn"
+            >
+              <img src="../assets/icons/close-white-icon.svg" alt="" />
+            </button>
+          </nav>
         </div>
       </div>
     </header>
@@ -49,7 +68,7 @@
         </div>
       </section>
 
-      <section class="benefits">
+      <section class="benefits" id="about">
         <div class="container">
           <div class="benefits__content benefits-content">
             <h2 class="benefits-content__title">Что вы получите после курса</h2>
@@ -94,7 +113,7 @@
         </div>
       </section>
 
-      <section class="packages">
+      <section class="packages" id="prices">
         <div class="container">
           <div class="packages__content packages-content">
             <h2 class="packages-content__title">Выберите нужный пакет</h2>

@@ -1,6 +1,10 @@
 @use 'variables' as *;
 @forward './blocks/button';
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   min-width: 320px;
   min-height: 100dvh;
@@ -12,10 +16,15 @@ body {
   line-height: 1.6;
   background-color: $bg-primary-color;
   color: $text-primary-color;
+
+  &.disable-scroll {
+    overflow: hidden;
+  }
 }
 
 section {
   padding: 120px 0;
+  scroll-margin-top: 60px;
 }
 
 .container {
