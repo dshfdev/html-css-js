@@ -1,6 +1,6 @@
 const burgerBtn = document.querySelector('#burger-btn');
 const mobileMenu = document.querySelector('#mobile-menu');
-const closeBtn = document.querySelector('#close-mobile-menu-btn');
+const closeMobileMenuBtn = document.querySelector('#close-mobile-menu-btn');
 const mobileMenuLinks = document.querySelectorAll('.mobile-menu__link');
 
 const handleMobileMenuOpen = () => {
@@ -18,7 +18,7 @@ const handleMobileMenuClose = () => {
 };
 
 burgerBtn.addEventListener('click', handleMobileMenuOpen);
-closeBtn.addEventListener('click', handleMobileMenuClose);
+closeMobileMenuBtn.addEventListener('click', handleMobileMenuClose);
 mobileMenuLinks.forEach((link) => {
   link.addEventListener('click', handleMobileMenuClose);
 });
