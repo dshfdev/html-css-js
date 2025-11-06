@@ -7,7 +7,7 @@ const nameInputErrorField = document.getElementById('name-error');
 const phoneInputErrorField = document.getElementById('tel-error');
 const emailInputErrorField = document.getElementById('email-error');
 
-const regexName = new RegExp(/^[а-яё\s\-]{2,}$/i);
+const regexName = new RegExp(/^[а-яё\s-]{2,}$/i);
 const regexPhone = new RegExp(/^(\+7|7|8)\d{10}$/);
 const regexEmail = new RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
 
@@ -167,7 +167,7 @@ function checkFormValidity() {
     formData.name.isValid && formData.phone.isValid && formData.email.isValid;
 
   if (isAllInputsValid) {
-    console.log('Заявка успешно отправлена:', {
+    console.info('Заявка успешно отправлена:', {
       name: formData.name.value,
       phone: formData.phone.value,
       email: formData.email.value,
