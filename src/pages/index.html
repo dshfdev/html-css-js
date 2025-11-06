@@ -141,9 +141,60 @@
         </div>
       </section>
 
-      <section class="teachers" id="teachers">
+      <section class="promo-form">
         <div class="container">
+          <div class="promo-form__content">
+            <div class="promo-form__text promo-form-text">
+              <h2 class="promo-form-text__title">Запишитесь на курс со скидкой 10%</h2>
+              <p class="promo-form-text__deadline">Акция действительна до 10 марта 2022 года</p>
+            </div>
 
+            <form class="promo-form__form" id="form">
+              <div class="promo-form__input-field input-field">
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  minlength="2"
+                  class="input-field__input"
+                  placeholder="Имя"
+                  autocomplete="name"
+                  aria-label="Имя"
+                />
+                <span id="name-error" class="input-field__error-text"></span>
+              </div>
+              <div class="promo-form__input-field input-field">
+                <input
+                  type="tel"
+                  id="tel"
+                  name="tel"
+                  required
+                  class="input-field__input"
+                  placeholder="Телефон"
+                  autocomplete="tel"
+                  aria-label="Телефон"
+                />
+                <span id="tel-error" class="input-field__error-text"></span>
+              </div>
+              <div class="promo-form__input-field input-field">
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  class="input-field__input"
+                  placeholder="Email"
+                  autocomplete="email"
+                  aria-label="Email"
+                />
+                <span id="email-error" class="input-field__error-text"></span>
+              </div>
+              <button type="submit" class="btn btn--dark promo-form__btn-submit">
+                Оформить заявку
+              </button>
+            </form>
+          </div>
         </div>
       </section>
     </main>
