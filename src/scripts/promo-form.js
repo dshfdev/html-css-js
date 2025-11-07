@@ -11,58 +11,6 @@ const regexName = new RegExp(/^[а-яё\s-]{2,}$/i);
 const regexPhone = new RegExp(/^(\+7|7|8)\d{10}$/);
 const regexEmail = new RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
 
-const validateNameInput = (value) => {
-  if (!value.trim()) {
-    return 'Поле "Имя" обязательно для заполнения';
-  }
-  if (value.length < 2) {
-    return 'Имя должно содержать минимум 2 символа';
-  }
-  if (!regexName.test(value)) {
-    return 'Имя должно содержать только русские буквы и пробелы';
-  }
-  return '';
-};
-const validatePhoneInput = (value) => {
-  if (!value.trim()) {
-    return 'Поле "Телефон" обязательно для заполнения';
-  }
-  const digitsOnly = value.replace(/\D/g, '');
-  if (!/^(\+7|7|8)/.test(value)) {
-    return 'Номер должен начинаться с +7, 7 или 8';
-  }
-  if (digitsOnly.length < 11) {
-    const remainingDigit = 11 - digitsOnly.length;
-    return `Введите ещё ${remainingDigit} цифр`;
-  }
-  if (digitsOnly.length > 11) {
-    return 'Номер слишком длинный. Удалите лишние цифры';
-  }
-  if (!regexPhone.test(value)) {
-    return 'Телефон должен содержать только цифры';
-  }
-  return '';
-};
-const validateEmailInput = (value) => {
-  if (!value.trim()) {
-    return 'Поле "Email" обязательно для заполнения';
-  }
-  if (!regexEmail.test(value)) {
-    return 'Введите корректный email адрес';
-  }
-  return '';
-};
-
-const highlightInput = (input, errorField, errorMessage) => {
-  if (errorMessage) {
-    input.classList.add('input-field__input--error');
-    errorField.textContent = errorMessage;
-  } else {
-    input.classList.remove('input-field__input--error');
-    errorField.textContent = '';
-  }
-};
-
 let formData = {
   name: {
     value: '',
@@ -78,55 +26,69 @@ let formData = {
   },
 };
 
-let isFormSubmit = false;
-
 function handleNameValueChange(event) {
   formData.name.value = event.target.value;
-
-  if (isFormSubmit) {
-    const errorMessage = validateNameInput(formData.name.value);
-    formData.name.isValid = !errorMessage;
-    highlightInput(nameInput, nameInputErrorField, errorMessage);
-  }
+  formData.name.isValid = true;
+  nameInput.classList.remove('input-field__input--error');
+  nameInputErrorField.textContent = '';
 }
 nameInput.addEventListener('input', handleNameValueChange);
+nameInput.addEventListener('paste', handleNameValueChange);
+nameInput.addEventListener('keydown', handleNameValueChange);
 
 function handlePhoneValueChange(event) {
   formData.phone.value = event.target.value;
-
-  if (isFormSubmit) {
-    const errorMessage = validatePhoneInput(formData.phone.value);
-    formData.phone.isValid = !errorMessage;
-    highlightInput(phoneInput, phoneInputErrorField, errorMessage);
-  }
+  formData.phone.isValid = true;
+  phoneInput.classList.remove('input-field__input--error');
+  phoneInputErrorField.textContent = '';
 }
 phoneInput.addEventListener('input', handlePhoneValueChange);
+phoneInput.addEventListener('paste', handlePhoneValueChange);
+phoneInput.addEventListener('keydown', handlePhoneValueChange);
 
 function handleEmailValueChange(event) {
   formData.email.value = event.target.value;
-
-  if (isFormSubmit) {
-    const errorMessage = validateEmailInput(formData.email.value);
-    formData.email.isValid = !errorMessage;
-    highlightInput(emailInput, emailInputErrorField, errorMessage);
-  }
+  formData.phone.isValid = true;
+  emailInput.classList.remove('input-field__input--error');
+  emailInputErrorField.textContent = '';
 }
 emailInput.addEventListener('input', handleEmailValueChange);
+emailInput.addEventListener('paste', handleEmailValueChange);
+emailInput.addEventListener('keydown', handleEmailValueChange);
 
 function checkNameValidity() {
-  const errorMessage = validateNameInput(formData.name.value);
-  formData.name.isValid = !errorMessage;
-  highlightInput(nameInput, nameInputErrorField, errorMessage);
+  const isValidValue = formData.name.value.match(regexName);
+  formData.name.isValid = isValidValue;
+  if (!isValidValue) {
+    nameInput.classList.add('input-field__input--error');
+    nameInputErrorField.textContent = 'Имя должно содержать только русские буквы (мин. 2 символа)';
+    return;
+  }
+  nameInput.classList.remove('input-field__input--error');
+  nameInputErrorField.textContent = '';
 }
+
 function checkPhoneValidity() {
-  const errorMessage = validatePhoneInput(formData.phone.value);
-  formData.phone.isValid = !errorMessage;
-  highlightInput(phoneInput, phoneInputErrorField, errorMessage);
+  const isValidValue = formData.phone.value.match(regexPhone);
+  formData.phone.isValid = isValidValue;
+  if (!isValidValue) {
+    phoneInput.classList.add('input-field__input--error');
+    phoneInputErrorField.textContent = 'Введите корректный номер телефона';
+    return;
+  }
+  phoneInput.classList.remove('input-field__input--error');
+  phoneInputErrorField.textContent = '';
 }
 function checkEmailValidity() {
-  const errorMessage = validateEmailInput(formData.email.value);
-  formData.email.isValid = !errorMessage;
-  highlightInput(emailInput, emailInputErrorField, errorMessage);
+  const isValidValue = formData.email.value.match(regexEmail);
+  formData.email.isValid = isValidValue;
+  if (!isValidValue) {
+    emailInput.classList.add('input-field__input--error');
+    emailInputErrorField.textContent = 'Введите корректный email адрес';
+    return;
+  }
+  emailInput.classList.remove('input-field__input--error');
+  emailInputErrorField.textContent = '';
 }
 
 function clearInputs() {
@@ -148,14 +110,9 @@ function clearInputs() {
   phoneInput.value = '';
   emailInput.value = '';
 
-  nameInput.classList.remove('input-field__input--error');
-  phoneInput.classList.remove('input-field__input--error');
-  emailInput.classList.remove('input-field__input--error');
   nameInputErrorField.textContent = '';
   phoneInputErrorField.textContent = '';
   emailInputErrorField.textContent = '';
-
-  isFormSubmit = false;
 }
 
 function checkFormValidity() {
@@ -163,10 +120,10 @@ function checkFormValidity() {
   checkPhoneValidity();
   checkEmailValidity();
 
-  const isAllInputsValid =
-    formData.name.isValid && formData.phone.isValid && formData.email.isValid;
+  const formNativeValidity = form.checkValidity();
+  const isAllInputsValid = Object.values(formData).filter((value) => !value.isValid).length;
 
-  if (isAllInputsValid) {
+  if (formNativeValidity && Boolean(!isAllInputsValid)) {
     console.info('Заявка успешно отправлена:', {
       name: formData.name.value,
       phone: formData.phone.value,
@@ -179,6 +136,5 @@ function checkFormValidity() {
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  isFormSubmit = true;
   checkFormValidity();
 });
