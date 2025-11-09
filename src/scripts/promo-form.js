@@ -26,72 +26,97 @@ let formData = {
   },
 };
 
-function handleNameValueChange(event) {
-  formData.name.value = event.target.value;
+const highlightInput = (input, isValid) => {
+  if (isValid) {
+    input.classList.remove('input-field__input--error');
+    return;
+  }
+  input.classList.add('input-field__input--error');
+};
+
+const checkNameInputValidity = () => {
+  if (!formData.name.value.length) {
+    nameInputErrorField.innerText = 'Поле "Имя" обязательно для заполнения';
+    formData.name.isValid = false;
+    highlightInput(nameInput, false);
+    return false;
+  }
+  if (formData.name.value.length < 2) {
+    nameInputErrorField.innerText = 'Имя должно содержать минимум 2 символа';
+    formData.name.isValid = false;
+    highlightInput(nameInput, false);
+    return false;
+  }
+  if (!formData.name.value.match(regexName)) {
+    nameInputErrorField.innerText = 'Имя должно содержать только русские буквы и пробелы';
+    formData.name.isValid = false;
+    highlightInput(nameInput, false);
+    return false;
+  }
+  nameInputErrorField.innerText = '';
   formData.name.isValid = true;
-  nameInput.classList.remove('input-field__input--error');
-  nameInputErrorField.textContent = '';
-}
-nameInput.addEventListener('input', handleNameValueChange);
-nameInput.addEventListener('paste', handleNameValueChange);
-nameInput.addEventListener('keydown', handleNameValueChange);
+  highlightInput(nameInput, true);
+  return true;
+};
+nameInput.addEventListener('input', (event) => {
+  formData.name.value = event.target.value;
+  if (!formData.name.isValid) {
+    checkNameInputValidity();
+  }
+});
 
-function handlePhoneValueChange(event) {
+const checkPhoneInputValidity = () => {
+  if (!formData.phone.value.length) {
+    phoneInputErrorField.innerText = 'Поле "Телефон" обязательно для заполнения';
+    formData.phone.isValid = false;
+    highlightInput(phoneInput, false);
+    return false;
+  }
+  if (!formData.phone.value.match(regexPhone)) {
+    phoneInputErrorField.innerText = 'Введите корректный номер телефона';
+    formData.phone.isValid = false;
+    highlightInput(phoneInput, false);
+    return false;
+  }
+  phoneInputErrorField.innerText = '';
+  formData.phone.isValid = true;
+  highlightInput(phoneInput, true);
+  return true;
+};
+phoneInput.addEventListener('input', (event) => {
   formData.phone.value = event.target.value;
-  formData.phone.isValid = true;
-  phoneInput.classList.remove('input-field__input--error');
-  phoneInputErrorField.textContent = '';
-}
-phoneInput.addEventListener('input', handlePhoneValueChange);
-phoneInput.addEventListener('paste', handlePhoneValueChange);
-phoneInput.addEventListener('keydown', handlePhoneValueChange);
+  if (!formData.phone.isValid) {
+    checkPhoneInputValidity();
+  }
+});
 
-function handleEmailValueChange(event) {
+const checkEmailInputValidity = () => {
+  if (!formData.email.value.length) {
+    emailInputErrorField.innerText = 'Поле "Email" обязательно для заполнения';
+    formData.email.isValid = false;
+    highlightInput(emailInput, false);
+    return false;
+  }
+  if (!formData.email.value.match(regexEmail)) {
+    emailInputErrorField.innerText = 'Введите корректный email адрес';
+    formData.email.isValid = false;
+    highlightInput(emailInput, false);
+    return false;
+  }
+  emailInputErrorField.innerText = '';
+  formData.email.isValid = true;
+  highlightInput(emailInput, true);
+  return true;
+};
+emailInput.addEventListener('input', (event) => {
   formData.email.value = event.target.value;
-  formData.phone.isValid = true;
-  emailInput.classList.remove('input-field__input--error');
-  emailInputErrorField.textContent = '';
-}
-emailInput.addEventListener('input', handleEmailValueChange);
-emailInput.addEventListener('paste', handleEmailValueChange);
-emailInput.addEventListener('keydown', handleEmailValueChange);
-
-function checkNameValidity() {
-  const isValidValue = formData.name.value.match(regexName);
-  formData.name.isValid = isValidValue;
-  if (!isValidValue) {
-    nameInput.classList.add('input-field__input--error');
-    nameInputErrorField.textContent = 'Имя должно содержать только русские буквы (мин. 2 символа)';
-    return;
+  if (!formData.email.isValid) {
+    checkEmailInputValidity();
   }
-  nameInput.classList.remove('input-field__input--error');
-  nameInputErrorField.textContent = '';
-}
+});
 
-function checkPhoneValidity() {
-  const isValidValue = formData.phone.value.match(regexPhone);
-  formData.phone.isValid = isValidValue;
-  if (!isValidValue) {
-    phoneInput.classList.add('input-field__input--error');
-    phoneInputErrorField.textContent = 'Введите корректный номер телефона';
-    return;
-  }
-  phoneInput.classList.remove('input-field__input--error');
-  phoneInputErrorField.textContent = '';
-}
-function checkEmailValidity() {
-  const isValidValue = formData.email.value.match(regexEmail);
-  formData.email.isValid = isValidValue;
-  if (!isValidValue) {
-    emailInput.classList.add('input-field__input--error');
-    emailInputErrorField.textContent = 'Введите корректный email адрес';
-    return;
-  }
-  emailInput.classList.remove('input-field__input--error');
-  emailInputErrorField.textContent = '';
-}
-
-function clearInputs() {
+const resetForm = () => {
+  form.reset();
   formData = {
     name: {
       value: '',
@@ -106,35 +131,30 @@ function clearInputs() {
       isValid: false,
     },
   };
-  nameInput.value = '';
-  phoneInput.value = '';
-  emailInput.value = '';
+};
 
-  nameInputErrorField.textContent = '';
-  phoneInputErrorField.textContent = '';
-  emailInputErrorField.textContent = '';
-}
+const validateAllFields = () => {
+  checkNameInputValidity();
+  checkPhoneInputValidity();
+  checkEmailInputValidity();
+};
 
-function checkFormValidity() {
-  checkNameValidity();
-  checkPhoneValidity();
-  checkEmailValidity();
+const checkFormValidity = () => {
+  validateAllFields();
+  return checkNameInputValidity() && checkPhoneInputValidity() && checkEmailInputValidity();
+};
 
-  const formNativeValidity = form.checkValidity();
-  const isAllInputsValid = Object.values(formData).filter((value) => !value.isValid).length;
-
-  if (formNativeValidity && Boolean(!isAllInputsValid)) {
-    console.info('Заявка успешно отправлена:', {
-      name: formData.name.value,
-      phone: formData.phone.value,
-      email: formData.email.value,
-    });
-
-    clearInputs();
+form.addEventListener('submit', (formSubmitEvent) => {
+  formSubmitEvent.preventDefault();
+  const isFormValid = checkFormValidity();
+  if (!isFormValid) {
+    return;
   }
-}
+  console.info('Заявка успешно отправлена:', {
+    name: formData.name.value,
+    phone: formData.phone.value,
+    email: formData.email.value,
+  });
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  checkFormValidity();
+  resetForm();
 });
