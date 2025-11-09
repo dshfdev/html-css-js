@@ -149,14 +149,12 @@
               <p class="promo-form-text__deadline">Акция действительна до 10 марта 2022 года</p>
             </div>
 
-            <form class="promo-form__form" id="form">
+            <form class="promo-form__form" id="form" novalidate>
               <div class="promo-form__input-field input-field">
                 <input
                   type="text"
                   id="name"
                   name="name"
-                  required
-                  minlength="2"
                   class="input-field__input"
                   placeholder="Имя"
                   autocomplete="name"
@@ -169,7 +167,6 @@
                   type="tel"
                   id="tel"
                   name="tel"
-                  required
                   class="input-field__input"
                   placeholder="Телефон"
                   autocomplete="tel"
@@ -182,7 +179,6 @@
                   type="email"
                   id="email"
                   name="email"
-                  required
                   class="input-field__input"
                   placeholder="Email"
                   autocomplete="email"
