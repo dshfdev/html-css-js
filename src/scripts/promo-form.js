@@ -14,15 +14,15 @@ const regexEmail = new RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
 let formData = {
   name: {
     value: '',
-    isValid: false,
+    isValid: true,
   },
   phone: {
     value: '',
-    isValid: false,
+    isValid: true,
   },
   email: {
     value: '',
-    isValid: false,
+    isValid: true,
   },
 };
 
@@ -31,6 +31,7 @@ const highlightInput = (input, isValid) => {
     input.classList.remove('input-field__input--error');
     return;
   }
+
   input.classList.add('input-field__input--error');
 };
 
@@ -41,23 +42,28 @@ const checkNameInputValidity = () => {
     highlightInput(nameInput, false);
     return false;
   }
+
   if (formData.name.value.length < 2) {
     nameInputErrorField.innerText = 'Имя должно содержать минимум 2 символа';
     formData.name.isValid = false;
     highlightInput(nameInput, false);
     return false;
   }
+
   if (!formData.name.value.match(regexName)) {
     nameInputErrorField.innerText = 'Имя должно содержать только русские буквы и пробелы';
     formData.name.isValid = false;
     highlightInput(nameInput, false);
     return false;
   }
+
   nameInputErrorField.innerText = '';
   formData.name.isValid = true;
   highlightInput(nameInput, true);
+
   return true;
 };
+
 nameInput.addEventListener('input', (event) => {
   formData.name.value = event.target.value;
   if (!formData.name.isValid) {
@@ -72,17 +78,21 @@ const checkPhoneInputValidity = () => {
     highlightInput(phoneInput, false);
     return false;
   }
+
   if (!formData.phone.value.match(regexPhone)) {
     phoneInputErrorField.innerText = 'Введите корректный номер телефона';
     formData.phone.isValid = false;
     highlightInput(phoneInput, false);
     return false;
   }
+
   phoneInputErrorField.innerText = '';
   formData.phone.isValid = true;
   highlightInput(phoneInput, true);
+
   return true;
 };
+
 phoneInput.addEventListener('input', (event) => {
   formData.phone.value = event.target.value;
   if (!formData.phone.isValid) {
@@ -97,17 +107,21 @@ const checkEmailInputValidity = () => {
     highlightInput(emailInput, false);
     return false;
   }
+
   if (!formData.email.value.match(regexEmail)) {
     emailInputErrorField.innerText = 'Введите корректный email адрес';
     formData.email.isValid = false;
     highlightInput(emailInput, false);
     return false;
   }
+
   emailInputErrorField.innerText = '';
   formData.email.isValid = true;
   highlightInput(emailInput, true);
+
   return true;
 };
+
 emailInput.addEventListener('input', (event) => {
   formData.email.value = event.target.value;
   if (!formData.email.isValid) {
@@ -120,15 +134,15 @@ const resetForm = () => {
   formData = {
     name: {
       value: '',
-      isValid: false,
+      isValid: true,
     },
     phone: {
       value: '',
-      isValid: false,
+      isValid: true,
     },
     email: {
       value: '',
-      isValid: false,
+      isValid: true,
     },
   };
 };
@@ -141,15 +155,18 @@ const validateAllFields = () => {
 
 const checkFormValidity = () => {
   validateAllFields();
+
   return checkNameInputValidity() && checkPhoneInputValidity() && checkEmailInputValidity();
 };
 
 form.addEventListener('submit', (formSubmitEvent) => {
   formSubmitEvent.preventDefault();
+
   const isFormValid = checkFormValidity();
   if (!isFormValid) {
     return;
   }
+
   console.info('Заявка успешно отправлена:', {
     name: formData.name.value,
     phone: formData.phone.value,
