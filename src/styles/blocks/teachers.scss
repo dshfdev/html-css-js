@@ -1,0 +1,34 @@
+@use '../variables' as *;
+
+.teachers {
+  padding: 120px 0 0 0;
+
+  .teachers-content {
+    &__title {
+      font-size: 50px;
+      font-weight: 600;
+    }
+
+    &__slider {
+      padding-top: 60px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .teachers {
+    padding: 60px 0 0 0;
+
+    .teachers-content {
+      &__title {
+        font-size: 30px;
+        line-height: 1.4;
+        text-align: center;
+      }
+
+      &__slider {
+        padding-top: 40px;
+      }
+    }
+  }
+}
