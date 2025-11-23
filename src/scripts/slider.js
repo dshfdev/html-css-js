@@ -3,7 +3,9 @@ const slideButtons = document.querySelectorAll('.slider-controls__button');
 const sliderScrollbar = document.querySelector('.slider-controls__scrollbar');
 const scrollbarThumb = sliderScrollbar.querySelector('.slider-controls__scrollbar__thumb');
 
-const calculateMaxScrollLeft = () => imageList.scrollWidth - imageList.clientWidth;
+const calculateMaxScrollLeft = () => {
+  return imageList.scrollWidth - imageList.clientWidth;
+};
 const updateScrollbarWidth = () => {
   scrollbarThumb.style.width = `${(imageList.clientWidth / imageList.scrollWidth) * 100}%`;
 };
