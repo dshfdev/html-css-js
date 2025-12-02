@@ -28,8 +28,9 @@
     background-color: $bg-primary-color;
     border-radius: 20px;
     padding: 40px;
-    max-width: 95%;
-    max-height: 95%;
+    width: 940px;
+    height: 768px;
+    box-sizing: border-box;
   }
 
   &__close-btn {
@@ -37,5 +38,6 @@
     top: 40px;
     right: 40px;
     font-size: 18px;
+    color: $text-tertiary-color;
   }
 }
