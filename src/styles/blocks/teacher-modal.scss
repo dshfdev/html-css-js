@@ -93,14 +93,24 @@
       }
     }
 
-    .teacher-tab-content {
-      display: none;
+    &__content {
       flex: 1;
+      min-height: 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .teacher-tab-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 0;
+      display: none;
       overflow-y: auto;
       outline: none;
       scrollbar-width: thin;
       scrollbar-color: $controls-bg-secondary $controls-bg-tertiary;
-      max-height: 345px;
 
       &::-webkit-scrollbar {
         width: 5px;
@@ -116,6 +126,10 @@
 
         &:first-of-type {
           margin-top: 0;
+        }
+
+        &:last-child {
+          margin-bottom: 32px;
         }
       }
 
