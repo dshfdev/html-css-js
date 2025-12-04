@@ -1,17 +1,17 @@
-const tabButtons = document.querySelectorAll('.tab-btn');
+const tabButtons = document.querySelectorAll('.teacher-tab-buttons__btn');
 const tabContents = document.querySelectorAll('.teacher-tab-content');
 const closeModalBtn = document.querySelector('.modal__close-btn');
 const modalBackdrop = document.querySelector('.modal__backdrop');
 
-const activeButton = (clickedButton) => {
+const setButtonActive = (clickedButton) => {
   tabButtons.forEach((button) => {
-    button.classList.remove('tab-btn--active');
+    button.classList.remove('teacher-tab-buttons__btn--active');
   });
 
-  clickedButton.classList.add('tab-btn--active');
+  clickedButton.classList.add('teacher-tab-buttons__btn--active');
 };
 
-const activeContent = (dataTab) => {
+const setContentActive = (dataTab) => {
   tabContents.forEach((tab) => {
     tab.classList.remove('teacher-tab-content--active');
   });
@@ -27,17 +27,17 @@ const activeContent = (dataTab) => {
 
 tabButtons.forEach((button) => {
   button.addEventListener('click', () => {
-    activeButton(button);
+    setButtonActive(button);
 
     const tab = button.getAttribute('data-tab');
-    activeContent(tab);
+    setContentActive(tab);
   });
 });
 
 [modalBackdrop, closeModalBtn].forEach((element) => {
   element.addEventListener('click', () => {
     const firstButton = tabButtons[0];
-    activeButton(firstButton);
-    activeContent(firstButton.getAttribute('data-tab'));
+    setButtonActive(firstButton);
+    setContentActive(firstButton.getAttribute('data-tab'));
   });
 });
