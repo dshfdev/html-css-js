@@ -1,0 +1,131 @@
+@use '../variables' as *;
+
+.teacher-modal {
+  width: 860px;
+  height: 688px;
+
+  .teacher-top-content {
+    display: flex;
+    gap: 40px;
+
+    &__img {
+      width: 160px;
+      max-height: 222px;
+      border-radius: 20px;
+      object-fit: cover;
+    }
+
+    .teacher-info {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      &__name {
+        font-size: 24px;
+        font-weight: 600;
+      }
+
+      &__description {
+        font-size: 18px;
+        color: $text-tertiary-color;
+      }
+
+      &__links {
+        display: flex;
+        gap: 10px;
+      }
+
+      &__link {
+        width: 30px;
+        height: 30px;
+
+        &:hover {
+          opacity: 0.7;
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+    }
+  }
+
+  .teacher-modal-bottom {
+    margin-top: 20px;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 8px;
+      height: 32px;
+      background: linear-gradient(0deg, #ffffff 0%, #ffffff00 100%);
+      pointer-events: none;
+    }
+
+    &__tabs {
+      border-bottom: 1px solid $controls-bg-tertiary;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin-bottom: 20px;
+    }
+
+    .teacher-tab-buttons__btn {
+      padding: 20px 0;
+      text-align: left;
+
+      &:hover {
+        color: $controls-color-tertiary-hover;
+      }
+
+      &--active {
+        color: $controls-color-error;
+
+        &:hover {
+          color: $controls-color-error;
+        }
+      }
+    }
+
+    .teacher-tab-content {
+      height: 346px;
+      display: none;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: $controls-bg-secondary $controls-bg-tertiary;
+      padding-bottom: 30px;
+
+      &--active {
+        display: block;
+      }
+
+      &::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: $controls-bg-secondary;
+        border-radius: 40px;
+      }
+
+      &__paragraph {
+        &:not(:first-child) {
+          margin-top: 20px;
+        }
+      }
+
+      &__title {
+        font-size: 24px;
+        font-weight: 600;
+
+        &:not(:first-child) {
+          margin-top: 40px;
+        }
+      }
+    }
+  }
+}
