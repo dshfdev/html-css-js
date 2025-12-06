@@ -6,3 +6,4 @@ import './promo-form.js';
 import './slider.js';
 import './modal.js';
 import './teacher-modal.js';
+import './select.js';

@@ -330,6 +330,34 @@
               <button class="teacher-tab-buttons__btn" data-tab="experience">Опыт работы</button>
               <button class="teacher-tab-buttons__btn" data-tab="achievements">Достижения</button>
             </div>
+            <div class="select teacher-modal-bottom__select" data-select>
+              <button
+                class="select__btn"
+                aria-haspopup="listbox"
+                aria-expanded="false"
+                id="select-btn"
+              >
+                <span class="select__selected-text">Образование</span>
+                <img class="select__icon" src="../assets/icons/arrow-down-icon.svg" alt="" />
+              </button>
+              <ul
+                class="select__list"
+                role="listbox"
+                aria-labelledby="select-btn"
+                id="select-list"
+                hidden
+              >
+                <li role="option" aria-selected="true" tabindex="0" data-tab="education">
+                  Образование
+                </li>
+                <li role="option" aria-selected="false" tabindex="-1" data-tab="experience">
+                  Опыт работы
+                </li>
+                <li role="option" aria-selected="false" tabindex="-1" data-tab="achievements">
+                  Достижения
+                </li>
+              </ul>
+            </div>
 
             <div
               class="teacher-tab-content teacher-tab-content--active"
