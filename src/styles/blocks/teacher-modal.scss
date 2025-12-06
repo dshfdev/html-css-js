@@ -19,35 +19,35 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-    }
 
-    &__name {
-      font-size: 24px;
-      font-weight: 600;
-    }
-
-    &__description {
-      font-size: 18px;
-      color: $text-tertiary-color;
-    }
-
-    &__links {
-      display: flex;
-      gap: 10px;
-    }
-
-    &__link {
-      width: 30px;
-      height: 30px;
-
-      &:hover {
-        opacity: 0.7;
+      &__name {
+        font-size: 24px;
+        font-weight: 600;
       }
 
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
+      &__description {
+        font-size: 18px;
+        color: $text-tertiary-color;
+      }
+
+      &__links {
+        display: flex;
+        gap: 10px;
+      }
+
+      &__link {
+        width: 30px;
+        height: 30px;
+
+        &:hover {
+          opacity: 0.7;
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
       }
     }
   }
@@ -92,7 +92,7 @@
     }
 
     .teacher-tab-content {
-      max-height: min(346px, 40vh);
+      height: 346px;
       display: none;
       overflow-y: auto;
       scrollbar-width: thin;
