@@ -1,2 +1,62 @@
 @use '../variables' as *;
 
+.select {
+  display: none;
+  position: relative;
+  width: 100%;
+  color: $controls-color-primary;
+  margin-bottom: 20px;
+
+  &__btn {
+    width: 100%;
+    padding: 10px;
+    position: relative;
+    background-color: $controls-bg-primary;
+    line-height: 1.6;
+    border-bottom: 1px solid $controls-bg-quaternary;
+  }
+
+  &__selected-text {
+    margin-right: 5px;
+  }
+
+  &__icon {
+    position: absolute;
+    bottom: 15px;
+
+    &--rotated {
+      transform: rotate(180deg);
+    }
+
+  }
+
+  &__list {
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    left: 0;
+
+    &:not(&[hidden]) {
+      display: flex;
+      flex-direction: column;
+    }
+
+    & [role='option'] {
+      padding: 10px;
+      cursor: pointer;
+      background-color: $controls-bg-primary;
+      text-align: center;
+      border-bottom: 1px solid $controls-bg-quaternary;
+
+      &[aria-selected='true'] {
+        background-color: $controls-bg-primary-hover;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .select {
+    display: block;
+  }
+}
