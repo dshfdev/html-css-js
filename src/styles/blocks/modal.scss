@@ -42,4 +42,41 @@
       color: $controls-color-tertiary-hover;
     }
   }
+
+  &__close-btn-text {
+    display: block;
+  }
+
+  &__close-icon {
+    display: none;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+
+    path {
+      fill: $controls-bg-secondary;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .modal {
+    &__content {
+      border-radius: 0;
+      padding: 30px;
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      overflow-y: auto;
+    }
+
+    &__close-btn-text {
+      display: none;
+    }
+
+    &__close-icon {
+      display: block;
+    }
+  }
 }
