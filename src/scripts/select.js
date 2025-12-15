@@ -2,7 +2,7 @@ const tabButtons = document.querySelectorAll('.teacher-tab-buttons__btn');
 const tabContents = document.querySelectorAll('.teacher-tab-content');
 const selectBtn = document.querySelector('#select-btn');
 const selectList = document.querySelector('#select-list');
-const selectOptions = document.querySelectorAll('[role="option"]');
+const selectOptions = document.querySelectorAll('#select-list li');
 const selectBtnText = document.querySelector('.select__selected-text');
 const selectBtnIcon = document.querySelector('.select__icon');
 const modal = document.querySelector('.modal');
@@ -21,12 +21,23 @@ const hideSelectList = () => {
 };
 
 const handleSelectBtnClick = () => {
-  const isExpanded = selectBtn.getAttribute('aria-expanded') === 'true';
-  if (isExpanded) {
+  if (!selectList.hasAttribute('hidden')) {
     hideSelectList();
-  } else {
-    showSelectList();
+    return;
   }
+
+  showSelectList();
+};
+
+const updateActiveTabBtn = (dataTab) => {
+  tabButtons.forEach((button) => {
+    if (button.getAttribute('data-tab') !== dataTab) {
+      button.classList.remove('teacher-tab-buttons__btn--active');
+      return;
+    }
+
+    button.classList.add('teacher-tab-buttons__btn--active');
+  });
 };
 
 const setActiveOption = (selectedOption) => {
@@ -37,6 +48,9 @@ const setActiveOption = (selectedOption) => {
   selectedOption.setAttribute('aria-selected', 'true');
 
   selectBtnText.innerText = selectedOption.innerText.trim();
+
+  const dataTab = selectedOption.getAttribute('data-tab');
+  updateActiveTabBtn(dataTab);
 };
 
 const setActiveContent = (selectedOption) => {
@@ -51,14 +65,6 @@ const setActiveContent = (selectedOption) => {
     tabContent.classList.add('teacher-tab-content--active');
     tabContent.scrollTo({ top: 0 });
   }
-
-  tabButtons.forEach((button) => {
-    if (button.getAttribute('data-tab') === dataTab) {
-      button.classList.add('teacher-tab-buttons__btn--active');
-    } else {
-      button.classList.remove('teacher-tab-buttons__btn--active');
-    }
-  });
 };
 
 const handleOptionSelect = (selectedOption) => {
@@ -76,9 +82,11 @@ selectOptions.forEach((option) => {
 selectBtn.addEventListener('click', handleSelectBtnClick);
 
 const handleModalClick = (event) => {
-  if (!event.target.closest('.select')) {
-    hideSelectList();
+  if (event.target.closest('.select')) {
+    return;
   }
+
+  hideSelectList();
 };
 modal.addEventListener('click', handleModalClick);
 
@@ -86,9 +94,11 @@ const handleModalClose = () => {
   hideSelectList();
 
   const defaultOption = selectOptions[0];
-  if (defaultOption) {
-    setActiveOption(defaultOption);
-    setActiveContent(defaultOption);
+  if (!defaultOption) {
+    return;
   }
+
+  setActiveOption(defaultOption);
+  setActiveContent(defaultOption);
 };
 closeModalBtn.addEventListener('click', handleModalClose);
