@@ -91,6 +91,10 @@
       }
     }
 
+    .select {
+      display: none;
+    }
+
     .teacher-tab-content {
       height: 346px;
       display: none;
@@ -143,6 +147,9 @@
 
 @media (max-width: 768px) {
   .teacher-modal {
+    .select {
+      display: block;
+    }
     .teacher-top-content {
       gap: 10px;
 
@@ -180,15 +187,15 @@
         display: none;
       }
 
+      .select {
+        display: block;
+      }
+
       .teacher-tab-content {
         height: 100%;
+        margin-top: 20px;
         padding-bottom: 20px;
-        overflow-y: visible;
-        scrollbar-width: none;
-
-        &::-webkit-scrollbar {
-          display: none;
-        }
+        overflow-y: unset;
 
         &__paragraph {
           font-size: 14px;
