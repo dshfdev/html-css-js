@@ -102,6 +102,7 @@
       scrollbar-width: thin;
       scrollbar-color: $controls-bg-secondary $controls-bg-tertiary;
       padding-bottom: 30px;
+      padding-right: 10px;
 
       &--active {
         display: block;
@@ -138,10 +139,6 @@
   .teacher-modal {
     width: 100%;
     height: 100%;
-
-    .teacher-tab-content {
-      padding-right: 10px;
-    }
   }
 }
 
@@ -192,6 +189,7 @@
         height: 100%;
         margin-top: 20px;
         padding-bottom: 20px;
+        padding-right: 0;
         overflow-y: unset;
 
         &__paragraph {
