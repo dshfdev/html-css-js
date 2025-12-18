@@ -14,11 +14,11 @@
     gap: 5px;
     background-color: $controls-bg-primary;
     line-height: 1.6;
-  }
 
-  &__icon {
-    &--rotated {
-      transform: rotate(180deg);
+    &[aria-expanded='true'] {
+      .select__icon {
+        transform: rotate(180deg);
+      }
     }
   }
 
