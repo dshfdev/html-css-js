@@ -1,0 +1,49 @@
+@use '../variables' as *;
+
+.select {
+  position: relative;
+  width: 100%;
+  color: $controls-color-primary;
+
+  &__btn {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    background-color: $controls-bg-primary;
+    line-height: 1.6;
+
+    &[aria-expanded='true'] {
+      .select__icon {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &__list {
+    position: absolute;
+    width: 100%;
+    top: calc(100% + 3px);
+    left: 0;
+    background-color: $controls-bg-quaternary;
+
+    &:not(&[hidden]) {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    & [role='option'] {
+      padding: 10px;
+      cursor: pointer;
+      background-color: $controls-bg-primary;
+      text-align: center;
+
+      &[aria-selected='true'] {
+        background-color: $controls-bg-primary-hover;
+      }
+    }
+  }
+}

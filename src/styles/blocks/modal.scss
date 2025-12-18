@@ -41,5 +41,41 @@
     &:hover {
       color: $controls-color-tertiary-hover;
     }
+
+    svg {
+      display: none;
+
+      path {
+        fill: $controls-bg-secondary;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .modal {
+    &__content {
+      border-radius: 0;
+      padding: 30px;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      max-height: none;
+      overflow-y: auto;
+    }
+
+    &__close-btn {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+
+      span {
+        display: none;
+      }
+
+      svg {
+        display: block;
+      }
+    }
   }
 }

@@ -2,6 +2,8 @@ const tabButtons = document.querySelectorAll('.teacher-tab-buttons__btn');
 const tabContents = document.querySelectorAll('.teacher-tab-content');
 const closeModalBtn = document.querySelector('.modal__close-btn');
 const modalBackdrop = document.querySelector('.modal__backdrop');
+const selectOptions = document.querySelectorAll('#select-list li');
+const selectBtnText = document.querySelector('.select__selected-text');
 
 const setButtonActive = (clickedButton) => {
   tabButtons.forEach((button) => {
@@ -25,12 +27,23 @@ const setContentActive = (dataTab) => {
   tabContent.scrollTo({ top: 0 });
 };
 
+const updateSelectBtnText = (dataTab) => {
+  const matchingOption = Array.from(selectOptions).find(
+    (option) => option.getAttribute('data-tab') === dataTab,
+  );
+
+  if (matchingOption) {
+    selectBtnText.innerText = matchingOption.innerText.trim();
+  }
+};
+
 tabButtons.forEach((button) => {
   button.addEventListener('click', () => {
     setButtonActive(button);
 
     const tab = button.getAttribute('data-tab');
     setContentActive(tab);
+    updateSelectBtnText(tab);
   });
 });
 
