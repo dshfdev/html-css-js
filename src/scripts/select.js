@@ -4,20 +4,17 @@ const selectBtn = document.querySelector('#select-btn');
 const selectList = document.querySelector('#select-list');
 const selectOptions = document.querySelectorAll('#select-list li');
 const selectBtnText = document.querySelector('.select__selected-text');
-const selectBtnIcon = document.querySelector('.select__icon');
 const modal = document.querySelector('.modal');
 const closeModalBtn = document.querySelector('.modal__close-btn');
 
 const showSelectList = () => {
   selectList.removeAttribute('hidden');
   selectBtn.setAttribute('aria-expanded', 'true');
-  selectBtnIcon.classList.add('select__icon--rotated');
 };
 
 const hideSelectList = () => {
   selectList.setAttribute('hidden', '');
   selectBtn.setAttribute('aria-expanded', 'false');
-  selectBtnIcon.classList.remove('select__icon--rotated');
 };
 
 const handleSelectBtnClick = () => {
